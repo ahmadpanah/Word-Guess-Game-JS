@@ -1,3 +1,7 @@
+
+
+const wordText = document.querySelector(".word")
+
 const initGame = () => {
     let randomObj = words[Math.floor(Math.random() * words.length)]
     let wordArrays = randomObj.word.split("")
@@ -6,7 +10,7 @@ const initGame = () => {
         [wordArrays[i], wordArrays[j]] = [wordArrays[j], wordArrays[i]];
     }
     
-    
+    wordText.innerHTML = wordArrays.join("");
     console.log(wordArrays)
 }
 
