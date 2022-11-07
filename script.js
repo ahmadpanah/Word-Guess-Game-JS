@@ -2,12 +2,29 @@
 
 const wordText = document.querySelector(".word")
 const hintText = document.querySelector(".hint span")
+const timeText = document.querySelector(".time b")
 const refreshBtn = document.querySelector(".refresh-word") 
 const checkBtn = document.querySelector(".check-word")
 const inputBox = document.querySelector("input")  
-let correctWord;
+let correctWord , timer;
+
+const initTimer = maxTime => {
+
+    timer = setInterval(() => {
+        if (maxTime > 0) {
+            maxTime--
+            return timeText.innerHTML = maxTime
+        }
+        clearInterval(timer)
+        alert("Time Over! 😎")
+        initGame()
+    },1000)
+
+
+}
 
 const initGame = () => {
+    initTimer(20)
     let randomObj = words[Math.floor(Math.random() * words.length)]
     let wordArrays = randomObj.word.split("")
     for (let i = wordArrays.length - 1; i > 0; i--) {
@@ -27,7 +44,9 @@ initGame()
 
 const solveWord = () => {
     let userWord = inputBox.value.toLocaleLowerCase()
+    if(!userWord)  return alert ("Please Enter a Word")
     if(userWord !== correctWord) return alert (`Vay! ${userWord} is not Correct! 👋`)
+    
     alert(`Doroste! ${userWord} is Correct! ✔️`)
     console.log(userWord)
 }
