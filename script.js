@@ -15,7 +15,7 @@ const initTimer = maxTime => {
             maxTime--
             return timeText.innerHTML = maxTime
         }
-        clearInterval(timer)
+        // clearInterval(timer)
         alert("Time Over! 😎")
         initGame()
     },1000)
@@ -24,6 +24,7 @@ const initTimer = maxTime => {
 }
 
 const initGame = () => {
+    clearInterval(timer)
     initTimer(20)
     let randomObj = words[Math.floor(Math.random() * words.length)]
     let wordArrays = randomObj.word.split("")
