@@ -42,6 +42,7 @@ body {
 }
 
 .details p {
+    word-wrap: break-word;
     font-size: 19px;
     margin-bottom: 12px;
 }
