@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     display: flex;
     min-height: 70vh;
     align-items: center;
@@ -25,13 +25,14 @@ body{
     border-bottom: 1px solid rgb(178, 13, 180);
 }
 
-.container .content{
+.container .content {
     margin: 20px;
 }
 
-.content .word{
+.content .word {
     font-size: 40px;
     text-align: center;
+    word-wrap: break-word;
     letter-spacing: 20px;
     text-transform: uppercase;
 }
@@ -41,8 +42,8 @@ body{
 }
 
 .details p {
-font-size: 19px;
-margin-bottom: 12px;
+    font-size: 19px;
+    margin-bottom: 12px;
 }
 
 .content input {
@@ -67,11 +68,11 @@ margin-bottom: 12px;
     border-radius: 5px;
 }
 
-.buttons .check-word{
+.buttons .check-word {
     background: rgb(22, 118, 0);
 }
 
 
-.buttons .refresh-word{
+.buttons .refresh-word {
     background: rgb(28, 4, 148);
 }
