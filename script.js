@@ -45,9 +45,9 @@ const solveWord = () => {
     let userWord = inputBox.value.toLocaleLowerCase()
     if(!userWord)  return alert ("Please Enter a Word")
     if(userWord !== correctWord) return alert (`Vay! ${userWord} is not Correct! 👋`)
-   // inputBox.value = "";
+   inputBox.value = "";
     alert(`Doroste! ${userWord} is Correct! ✔️`)
-    // initGame();
+    initGame();
     console.log(userWord)
 }
 
