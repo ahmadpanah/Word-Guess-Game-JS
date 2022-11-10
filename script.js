@@ -14,7 +14,9 @@ var startPnl = document.getElementById("start");
 var mainPnl = document.getElementById("main");
 
 var scoreCounter = 0;
+var healthCounter = 0;
 const scoreText = document.querySelector(".score span");
+const healthText = document.querySelector(".health span");
 const allText = document.querySelector(".score b");
 scoreText.innerHTML = scoreCounter;
 
@@ -58,18 +60,21 @@ noviceBtn.onclick = () => {
   levelInfo = { Type: noviceWords, Time: 21 };
   initGame(levelInfo.Type, levelInfo.Time);
   pnlVisibility();
+  health(7);
 };
 
 standardBtn.onclick = () => {
   levelInfo = { Type: standardWords, Time: 16 };
   initGame(levelInfo.Type, levelInfo.Time);
   pnlVisibility();
+  health(5);
 };
 
 expertBtn.onclick = () => {
   levelInfo = { Type: expertWords, Time: 11 };
   initGame(levelInfo.Type, levelInfo.Time);
   pnlVisibility();
+  health(3);
 };
 
 const pnlVisibility = () => {
@@ -77,20 +82,40 @@ const pnlVisibility = () => {
   mainPnl.classList.remove("d-none");
 };
 
+const health = (count) => {
+  for (let i = 0; i < count; i++) {
+    healthText.innerHTML = healthText.innerHTML + " ❤ ";
+  }
+  healthCounter = count;
+};
+
 checkBtn.onclick = () => {
   let userWord = inputBox.value.toLocaleLowerCase();
   if (!userWord) return alert("Please Enter a Word");
-  if (userWord !== correctWord)
-    return alert(`Vay! ${userWord} is not Correct! 👋`);
-  inputBox.value = "";
-  scoreCounter++;
-  scoreText.innerHTML = scoreCounter;
-  if (scoreCounter == levelInfo.Type.length) {
-    alert(`Winner Shodi! 🎉`);
-    startOverBtn.onclick();
+  if (userWord !== correctWord) {
+    alert(`Vay! ${userWord} is not Correct! 👋`);
+    healthText.innerHTML = healthText.innerHTML.substring(
+      3,
+      healthText.innerHTML.length
+    );
+    healthText.innerHTML = healthText.innerHTML + " 💔 ";
+    healthCounter--;
+    console.log(healthCounter);
+    if (healthCounter <= 0) {
+      alert(`Loser shodi! 😪`);
+      startOverBtn.onclick();
+    }
   } else {
-    alert(`Doroste! ${userWord} is Correct! ✔️`);
-    initGame(levelInfo.Type, levelInfo.Time);
+    inputBox.value = "";
+    scoreCounter++;
+    scoreText.innerHTML = scoreCounter;
+    if (scoreCounter == levelInfo.Type.length) {
+      alert(`Winner Shodi! 🎉`);
+      startOverBtn.onclick();
+    } else {
+      alert(`Doroste! ${userWord} is Correct! ✔️`);
+      initGame(levelInfo.Type, levelInfo.Time);
+    }
   }
 };
 
