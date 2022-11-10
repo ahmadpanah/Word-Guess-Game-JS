@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Guess Game</title>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.png" />
     <script src="word.js" defer></script>
     <script src="script.js" defer></script>
-    
-</head>
-<body>
-    <div class="container">
-        <h2>Word Guess!</h2>
-        <div class="content">
-            <p class="word"></p>
-            <div class="details">
-                <p class="hint">Hint: <span></span></p>
-                <p class="time">Time: <span><b>30</b>s</span></p>
-            </div>
-            <input type="text" placeholder="Enter your Guess">
-            <div class="buttons">
-                    <button class="refresh-word">Refresh Word</button>
-                    <button class="check-word">Check Word</button>
-            </div>
+  </head>
+  <body class="d-flex justify-content-center align-items-center">
+    <div class="container p-5 w-auto mt-5" id="start">
+      <h2 class="text-center m-5 p-4">SELECT LEVEL</h2>
+      <div class="content m-4">
+        <div class="buttons d-flex justify-content-between mt-3">
+          <button class="btn btn-danger pt-3 pb-3" id="novice">NOVICE</button>
+          <button class="btn btn-warning pt-3 pb-3" id="standard">
+            STANDARD
+          </button>
+          <button class="btn btn-success pt-3 pb-3" id="expert">EXPERT</button>
         </div>
+      </div>
     </div>
-</body>
+    <div class="d-none container w-auto mt-5" id="main">
+      <h2 class="text-center m-5 p-4">Word Guess!</h2>
+      <div class="content m-4">
+        <p class="word text-center m-5 p-4"></p>
+        <div class="details">
+          <p class="hint">Hint: <span></span></p>
+          <p class="time">
+            Time: <span><b></b>s</span>
+          </p>
+          <p class="score">Score: <span></span> / <b></b></p>
+          <p class="health">Health: <span></span></p>
+        </div>
+        <input class="w-100 p-3" type="text" placeholder="Enter your Guess" />
+        <div class="buttons d-flex justify-content-between mt-3">
+          <button class="start-over p-3 btn btn-primary">Start Over</button>
+          <button class="check-word p-3 btn btn-success">Check Word</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
