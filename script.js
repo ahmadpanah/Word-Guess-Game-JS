@@ -22,6 +22,8 @@ scoreText.innerHTML = scoreCounter;
 
 var levelInfo;
 
+var arrayIndex=0;
+
 const initTimer = (maxTime) => {
   timer = setInterval(() => {
     if (maxTime > 0) {
@@ -50,10 +52,30 @@ const initGame = (words, time) => {
 
   if (wordArrays.join("").toLowerCase() == randomObj.word.toLowerCase()) return;
 
-  wordText.innerHTML = wordArrays.join("");
-  hintText.innerHTML = randomObj.hint;
+  if(randomObj.used===false){
+    wordText.innerHTML = wordArrays.join("");
+    hintText.innerHTML = randomObj.hint;
+  
+    correctWord = randomObj.word.toLowerCase();
+        
+     arrayIndex++;
 
-  correctWord = randomObj.word.toLowerCase();
+    randomObj.used=true;
+  }
+  else{
+
+    if(arrayIndex===words.length){ 
+
+      alert(`score : ${scoreCounter}`)
+      document.location.reload();
+
+    }
+    else{
+      initGame(levelInfo.Type, levelInfo.Time);
+    }
+
+  }
+
 };
 
 noviceBtn.onclick = () => {
